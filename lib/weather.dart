@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:weather_app/hourly_forcast.dart';
+import 'package:weather_app/today_card.dart';
 
 part 'weather.g.dart';
 
@@ -7,7 +8,6 @@ part 'weather.g.dart';
 //@CustomDateTimeConverter()
 class Weather {
   final String condition;
-  final String icon;
   final String minTemp;
   final String maxTemp;
   final String day;
@@ -30,7 +30,6 @@ class Weather {
       this.chanceOfRain,
       this.windSpeed,
       this.condition,
-      this.icon,
       this.minTemp,
       this.maxTemp,
       this.day,
@@ -43,8 +42,7 @@ class Weather {
 Map<String, dynamic> map = {
   "weather": [
     {
-      "condition": "Sunny",
-      "icon": "assets/icons/sunny.png",
+      "condition":"clear",
       "day": "SUN",
       "minTemp": "11 C",
       "maxTemp": "17 C",
@@ -107,8 +105,7 @@ Map<String, dynamic> map = {
       "windSpeed": "20.4 km/h"
     },
     {
-      "condition": "Cloudy",
-      "icon": "assets/icons/cloudy.png",
+      "condition": "heavyCloud",
       "day": "MON",
       "minTemp": "11 C",
       "maxTemp": "17 C",
@@ -172,8 +169,7 @@ Map<String, dynamic> map = {
 
     },
     {
-      "condition": "Rainy",
-      "icon": "assets/icons/rainy.png",
+      "condition": "heavyRain",
       "day": "TUE",
       "minTemp": "11 C",
       "maxTemp": "17 C",
@@ -237,8 +233,7 @@ Map<String, dynamic> map = {
 
     },
     {
-      "condition": "Sunny",
-      "icon": "assets/icons/sunny.png",
+      "condition": "heavyCloud",
       "day": "WED",
       "minTemp": "11 C",
       "maxTemp": "17 C",
@@ -302,8 +297,7 @@ Map<String, dynamic> map = {
 
     },
     {
-      "condition": "Partial Rain",
-      "icon": "assets/icons/partial rainy.png",
+      "condition": "heavyRain",
       "day": "THU",
       "minTemp": "11 C",
       "maxTemp": "17 C",
@@ -367,8 +361,7 @@ Map<String, dynamic> map = {
 
     },
     {
-      "condition": "Partial Cloud",
-      "icon": "assets/icons/partial sunny.png",
+      "condition": "clear",
       "day": "FRI",
       "minTemp": "11 C",
       "maxTemp": "17 C",
@@ -432,8 +425,7 @@ Map<String, dynamic> map = {
 
     },
     {
-      "condition": "Sunny",
-      "icon": "assets/icons/sunny.png",
+      "condition": "clear",
       "day": "SAT",
       "minTemp": "11 C",
       "maxTemp": "17 C",

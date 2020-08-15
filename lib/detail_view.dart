@@ -14,7 +14,6 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
     final weather = Weathers.fromJson(map).weather[0];
 
     return Scaffold(
-      backgroundColor: Colors.black12,
       body: DefaultTabController(
         length: 2,
         child: NestedScrollView(
@@ -43,8 +42,8 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                 SliverPersistentHeader(
                   delegate: _SliverAppBarDelegate(
                     TabBar(
-                      labelColor: Colors.blue,
-                      unselectedLabelColor: Colors.grey,
+//                      labelColor: Colors.blue,
+//                      unselectedLabelColor: Colors.grey,
 
                       tabs: [
                         Tab(icon: Icon(Icons.info), text: "Detailed Information"),
@@ -247,50 +246,51 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                       child: Center(
                           child: Text(
                         "Hourly Forcast",
-                        style: TextStyle(color: Colors.grey[600], fontSize: 16),
+                        style: TextStyle( fontSize: 16),
                       )),
                     ),
                     Container(
-                      height: 90,
+                      height: 100,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: 13,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.all(2),
-                            child: Container(
-                              decoration: new BoxDecoration(
-                                shape: BoxShape.rectangle,
-                                color: Colors.white70,
-                                borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                              ),
-                              child: Column(children: [
-                                Padding(
-                                  padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
-                                  child: Text(
-                                    weather.hourlyForcast.times[index],
-                                    style: TextStyle(
-                                        fontSize: 12, color: Colors.black),
-                                  ),
+                            child: Card(
+                              child: Container(
+                                decoration: new BoxDecoration(
+                                  shape: BoxShape.rectangle,
+                                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
                                 ),
-                                Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(8, 4, 8, 4),
-                                    child: Image.asset(
-                                      weather.hourlyForcast.icons[index],
-                                      scale: 20,
-                                    )),
-                                Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(8, 4, 8, 8),
+                                child: Column(children: [
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
                                     child: Text(
-                                      weather.hourlyForcast
-                                              .temperatures[index] +
-                                          " \u2103",
+                                      weather.hourlyForcast.times[index],
                                       style: TextStyle(
-                                          fontSize: 12, color: Colors.black),
-                                    )),
-                              ]),
+                                          fontSize: 12),
+                                    ),
+                                  ),
+                                  Padding(
+                                      padding:
+                                          const EdgeInsets.fromLTRB(8, 4, 8, 4),
+                                      child: Image.asset(
+                                        weather.hourlyForcast.icons[index],
+                                        scale: 20,
+                                      )),
+                                  Padding(
+                                      padding:
+                                          const EdgeInsets.fromLTRB(8, 4, 8, 8),
+                                      child: Text(
+                                        weather.hourlyForcast
+                                                .temperatures[index] +
+                                            " \u2103",
+                                        style: TextStyle(
+                                            fontSize: 12),
+                                      )),
+                                ]),
+                              ),
                             ),
                           );
                         },

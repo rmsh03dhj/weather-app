@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:weather_app/bloc/bloc_provider.dart';
 import 'package:weather_app/detail_view.dart';
+import 'package:weather_app/today_card.dart';
 import 'package:weather_app/weather.dart';
 
 import 'bloc/weather_bloc.dart';
@@ -25,10 +26,10 @@ class _WeatherCard extends State<WeatherCard> {
       bloc:weatherBloc,
       child: Card(
       margin: EdgeInsets.all(4),
-      color: cardColorDependingOnDateMap[widget.listItems[widget.index].day],
+//      color: cardColorDependingOnDateMap[widget.listItems[widget.index].day],
       child: InkWell(
         onTap: (){
-        weatherBloc.changeBackgroundColor(cardColorDependingOnDateMap[widget.listItems[widget.index].day]);
+//        weatherBloc.changeBackgroundColor(cardColorDependingOnDateMap[widget.listItems[widget.index].day]);
         Navigator.pushNamed(context, DetailedWeatherView.route);
         },
         child: Row(
@@ -40,9 +41,8 @@ class _WeatherCard extends State<WeatherCard> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Image.asset(
-                      widget.listItems[widget.index].icon,
-                      scale: 15,
+                    child: Icon(
+                      weatherIconMap[widget.listItems[widget.index].condition],
                     ),
                   ),
                   Container(
@@ -84,13 +84,3 @@ class _WeatherCard extends State<WeatherCard> {
     );
   }
 }
-
-Map<String, Color> cardColorDependingOnDateMap = {
-  "SUN":Colors.green[50],
-  "MON":Colors.green[100],
-  "TUE":Colors.green[200],
-  "WED":Colors.green[300],
-  "THU":Colors.green[400],
-  "FRI":Colors.green,
-  "SAT":Colors.green[600],
-};

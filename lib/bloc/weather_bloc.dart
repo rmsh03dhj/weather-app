@@ -7,9 +7,7 @@ import 'package:weather_app/bloc/bloc_provider.dart';
 import 'package:weather_app/weather_card.dart';
 
 class WeatherBloc implements BlocBase {
-  final _backgroundColorController = BehaviorSubject<Color>.seeded(
-      cardColorDependingOnDateMap[
-          DateFormat('EEE').format(new DateTime.now()).toUpperCase()]);
+  final _backgroundColorController = BehaviorSubject<Color>();
 
   Stream<Color> get colorStream => _backgroundColorController.stream;
 

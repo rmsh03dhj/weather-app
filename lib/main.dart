@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider<WeatherBloc>(
       bloc: WeatherBloc(),
       child: MaterialApp(
+        theme: ThemeData.dark(),
         home: Dashboard(),
         routes: routes,
       ),

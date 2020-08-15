@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_app/detail_view.dart';
 import 'package:weather_app/weather.dart';
+import 'package:weather_icons/weather_icons.dart';
 
 class TodayCard extends StatefulWidget {
   final Weather weather;
@@ -16,72 +17,83 @@ class TodayCard extends StatefulWidget {
 class _TodayCard extends State<TodayCard> {
   @override
   Widget build(BuildContext context) {
-    return Card(
-        margin: EdgeInsets.all(4),
-        color: cardColorDependingOnDateMap[widget.weather.day],
-        child: InkWell(
-          onTap: (){
-            Navigator.pushNamed(context, DetailedWeatherView.route);
-          },
-          child: Column(
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, DetailedWeatherView.route);
+      },
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text("Today - ${DateFormat("MMM dd").format(DateTime.now())}",style: TextStyle(fontSize: 16),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Container(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  DateFormat("MMM dd").format(DateTime.now()),
-                  style:
-                  TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              Padding(
+                padding: const EdgeInsets.all(24),
+                child: Icon(
+                  weatherIconMap[widget.weather.condition],
+                  size: 72,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  widget.weather.icon,
-                  scale: 5,
+                padding: const EdgeInsets.all(24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        widget.weather.condition.toString().toUpperCase(),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        widget.weather.minTemp+" \u2103 / "+widget.weather.maxTemp + " \u2103",
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "RainFall Chances: ${widget.weather.chanceOfRain}"),
+                    )
+                  ],
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  widget.weather.condition.toString(),
-                  style:
-                  TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      '70 F',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 8),
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      '70 F',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 8),
-                    ),
-                  ),
-                ],
-              ),
+
             ],
           ),
-        ),
+        ],
+      ),
     );
   }
 }
 
-Map<String, Color> cardColorDependingOnDateMap = {
-  "SUN":Colors.green[50],
-  "MON":Colors.green[100],
-  "TUE":Colors.green[200],
-  "WED":Colors.green[300],
-  "THU":Colors.green[400],
-  "FRI":Colors.green,
-  "SAT":Colors.green[600],
+Map<String, IconData> weatherIconMap = {
+  "snow": WeatherIcons.snow,
+  "heavyRain": WeatherIcons.rain,
+  "lightRain": WeatherIcons.raindrops,
+  "showers": WeatherIcons.raindrop,
+  "heavyCloud": WeatherIcons.cloudy,
+  "lightCloud": WeatherIcons.cloud_refresh,
+  "clear": WeatherIcons.day_sunny,
+  "hail": WeatherIcons.hail,
+  "thunderstorm": WeatherIcons.thunderstorm,
 };
+
+enum WeatherCondition {
+  snow,
+  hail,
+  thunderstorm,
+  heavyRain,
+  lightRain,
+  showers,
+  heavyCloud,
+  lightCloud,
+  clear,
+  unknown
+}

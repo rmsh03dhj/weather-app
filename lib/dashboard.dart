@@ -38,7 +38,6 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     final weatherBloc = BlocProvider.of<WeatherBloc>(context);
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text("Weather App")
       ),
@@ -50,7 +49,7 @@ class _DashboardState extends State<Dashboard> {
                 print("printing from stream builder");
                 print(snapshot.data);
                 return Container(
-                  height: MediaQuery.of(context).size.height * 0.4,
+                  height: MediaQuery.of(context).size.height * 0.3,
                   child: TodayCard(
                     weathers.weather[0]
                   ),
@@ -58,7 +57,7 @@ class _DashboardState extends State<Dashboard> {
               }),
           Expanded(
             child: Container(
-              height: MediaQuery.of(context).size.height * 0.6,
+              height: MediaQuery.of(context).size.height * 0.7,
               child: ReorderableListView(
                 onReorder: _onReorder,
                 children: List.generate(

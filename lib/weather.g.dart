@@ -21,7 +21,6 @@ Weather _$WeatherFromJson(Map<String, dynamic> json) {
     chanceOfRain: json['chanceOfRain'] as String,
     windSpeed: json['windSpeed'] as String,
     condition: json['condition'] as String,
-    icon: json['icon'] as String,
     minTemp: json['minTemp'] as String,
     maxTemp: json['maxTemp'] as String,
     day: json['day'] as String,
@@ -31,7 +30,6 @@ Weather _$WeatherFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$WeatherToJson(Weather instance) => <String, dynamic>{
       'condition': instance.condition,
-      'icon': instance.icon,
       'minTemp': instance.minTemp,
       'maxTemp': instance.maxTemp,
       'day': instance.day,
