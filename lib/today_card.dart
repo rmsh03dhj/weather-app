@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_app/bloc/bloc_provider.dart';
+import 'package:weather_app/detail_view.dart';
 import 'package:weather_app/weather.dart';
-
-import 'bloc/weather_bloc.dart';
 
 class TodayCard extends StatefulWidget {
   final Weather weather;
@@ -23,6 +21,7 @@ class _TodayCard extends State<TodayCard> {
         color: cardColorDependingOnDateMap[widget.weather.day],
         child: InkWell(
           onTap: (){
+            Navigator.pushNamed(context, DetailedWeatherView.route);
           },
           child: Column(
             children: <Widget>[

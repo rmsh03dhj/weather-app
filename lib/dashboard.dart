@@ -7,14 +7,14 @@ import 'package:weather_app/weather.dart';
 import 'package:weather_app/weather_card.dart';
 import 'package:weather_app/weathers.dart';
 
-class MyHomePage extends StatefulWidget {
-  static const String route = '/my_home';
+class Dashboard extends StatefulWidget {
+  static const String route = '/dashboard';
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _DashboardState createState() => _DashboardState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _DashboardState extends State<Dashboard> {
   Weathers weathers = Weathers.fromJson(map);
   Color backgroundColor;
   void _onReorder(int oldIndex, int newIndex) {

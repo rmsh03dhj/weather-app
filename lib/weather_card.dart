@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:weather_app/bloc/bloc_provider.dart';
+import 'package:weather_app/detail_view.dart';
 import 'package:weather_app/weather.dart';
 
 import 'bloc/weather_bloc.dart';
@@ -28,6 +29,7 @@ class _WeatherCard extends State<WeatherCard> {
       child: InkWell(
         onTap: (){
         weatherBloc.changeBackgroundColor(cardColorDependingOnDateMap[widget.listItems[widget.index].day]);
+        Navigator.pushNamed(context, DetailedWeatherView.route);
         },
         child: Row(
           mainAxisSize: MainAxisSize.min,

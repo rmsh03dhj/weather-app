@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/weather.dart';
+import 'package:weather_app/weathers.dart';
 
 class DetailedWeatherView extends StatefulWidget {
-  final Weather weather;
-  DetailedWeatherView(this.weather);
+  static const String route = '/detail_view';
   @override
   _DetailedWeatherViewState createState() => _DetailedWeatherViewState();
 }
@@ -11,8 +11,11 @@ class DetailedWeatherView extends StatefulWidget {
 class _DetailedWeatherViewState extends State<DetailedWeatherView> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: DefaultTabController(
+    final weather = Weathers.fromJson(map).weather[0];
+
+    return Scaffold(
+      backgroundColor: Colors.black12,
+      body: DefaultTabController(
         length: 2,
         child: NestedScrollView(
             headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -75,7 +78,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       color: Colors.grey[600], fontSize: 14),
                                 ),
                                 Text(
-                                  widget.weather.precipitationProbability,
+                                  weather.precipitationProbability,
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 )
@@ -93,7 +96,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       color: Colors.grey[600], fontSize: 14),
                                 ),
                                 Text(
-                                  widget.weather.precipitation,
+                                  weather.precipitation,
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 )
@@ -119,7 +122,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       color: Colors.grey[600], fontSize: 14),
                                 ),
                                 Text(
-                                  widget.weather.preceivedTemperature,
+                                  weather.preceivedTemperature,
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 )
@@ -137,7 +140,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       color: Colors.grey[600], fontSize: 14),
                                 ),
                                 Text(
-                                  widget.weather.windSpeed,
+                                  weather.windSpeed,
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 )
@@ -163,7 +166,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       color: Colors.grey[600], fontSize: 14),
                                 ),
                                 Text(
-                                  widget.weather.humidity,
+                                  weather.humidity,
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 )
@@ -181,7 +184,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       color: Colors.grey[600], fontSize: 14),
                                 ),
                                 Text(
-                                  widget.weather.visibility,
+                                  weather.visibility,
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 )
@@ -207,7 +210,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       color: Colors.grey[600], fontSize: 14),
                                 ),
                                 Text(
-                                  widget.weather.uv,
+                                  weather.uv,
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 )
@@ -225,7 +228,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       color: Colors.grey[600], fontSize: 14),
                                 ),
                                 Text(
-                                  widget.weather.pressure,
+                                  weather.pressure,
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 )
@@ -265,7 +268,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                 Padding(
                                   padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
                                   child: Text(
-                                    widget.weather.hourlyForcast.times[index],
+                                    weather.hourlyForcast.times[index],
                                     style: TextStyle(
                                         fontSize: 12, color: Colors.black),
                                   ),
@@ -274,14 +277,14 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                     padding:
                                         const EdgeInsets.fromLTRB(8, 4, 8, 4),
                                     child: Image.asset(
-                                      widget.weather.hourlyForcast.icons[index],
+                                      weather.hourlyForcast.icons[index],
                                       scale: 20,
                                     )),
                                 Padding(
                                     padding:
                                         const EdgeInsets.fromLTRB(8, 4, 8, 8),
                                     child: Text(
-                                      widget.weather.hourlyForcast
+                                      weather.hourlyForcast
                                               .temperatures[index] +
                                           " \u2103",
                                       style: TextStyle(
