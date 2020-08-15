@@ -25,20 +25,17 @@ class _DetailedWeatherView extends State<DetailedWeatherView>
 
   @override
   Widget build(BuildContext context) {
-    print("I am herer");
-    print(widget.weather.hourlyForcast.times.length);
     return CustomScrollView(slivers: [
       SliverAppBar(
         pinned: true,
-        expandedHeight: 120,
+        expandedHeight: MediaQuery.of(context).size.height*0.2,
         flexibleSpace: FlexibleSpaceBar(
-          title: Text("Title"),
           background: Image.asset(widget.weather.icon, fit: BoxFit.cover),
         ),
         bottom: TabBar(
           tabs: [
-            Tab(text: 'Hourly Forcast'),
-            Tab(text: 'Other Details'),
+            Tab(text: 'Detailed Information'),
+            Tab(text: 'Other Information'),
           ],
           controller: controller,
         ),
@@ -47,41 +44,6 @@ class _DetailedWeatherView extends State<DetailedWeatherView>
         child: TabBarView(
           controller: controller,
           children: <Widget>[
-            ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 13,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(2),
-                  child: Container(
-                    height: 100,
-                    color: Colors.green[100],
-                    child: Column(children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
-                        child: Text(
-                          widget.weather.hourlyForcast.times[index],
-                          style: TextStyle(fontSize: 12, color: Colors.black),
-                        ),
-                      ),
-                      Padding(
-                          padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
-                          child: Image.asset(
-                            widget.weather.hourlyForcast.icons[index],
-                            scale: 20,
-                          )),
-                      Padding(
-                          padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
-                          child: Text(
-                            widget.weather.hourlyForcast.temperatures[index] +
-                                "\u2103",
-                            style: TextStyle(fontSize: 12, color: Colors.black),
-                          )),
-                    ]),
-                  ),
-                );
-              },
-            ),
             Container(
               child: Column(
                 children: [
@@ -260,10 +222,66 @@ class _DetailedWeatherView extends State<DetailedWeatherView>
                         ),
                       ],
                     ),
-                  )
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top:8, bottom: 8),
+                    child: Container(
+                      height: 1,
+                        color: Colors.grey[600]),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(child: Text("Hourly Forcast", style: TextStyle(
+                      color: Colors.grey[600], fontSize: 16
+                    ),)),
+                  ),
+                  Container(
+                    height: 90,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 13,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(2),
+                          child: Container(
+                            color: Colors.green[100],
+                            child: Column(children: [
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
+                                child: Text(
+                                  widget.weather.hourlyForcast.times[index],
+                                  style: TextStyle(fontSize: 12, color: Colors.black),
+                                ),
+                              ),
+                              Padding(
+                                  padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
+                                  child: Image.asset(
+                                    widget.weather.hourlyForcast.icons[index],
+                                    scale: 20,
+                                  )),
+                              Padding(
+                                  padding: const EdgeInsets.fromLTRB(8, 4, 8, 8),
+                                  child: Text(
+                                    widget.weather.hourlyForcast.temperatures[index] +
+                                        "\u2103",
+                                    style: TextStyle(fontSize: 12, color: Colors.black),
+                                  )),
+                            ]),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top:16, bottom: 8),
+                    child: Container(
+                        height: 1,
+                        color: Colors.grey[600]),
+                  ),
                 ],
               ),
             ),
+            Center(child: Text("Other Information", style: TextStyle(color: Colors.grey),),)
           ],
         ),
       ),
@@ -276,13 +294,3 @@ class _DetailedWeatherView extends State<DetailedWeatherView>
     super.dispose();
   }
 }
-
-Map<String, Color> cardColorDependingOnDateMap = {
-  "SUN": Colors.green[50],
-  "MON": Colors.green[100],
-  "TUE": Colors.green[200],
-  "WED": Colors.green[300],
-  "THU": Colors.green[400],
-  "FRI": Colors.green,
-  "SAT": Colors.green[600],
-};
