@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/weather.dart';
-import 'package:weather_app/weathers.dart';
+import 'package:weather_app/src/app/utils.dart';
+import 'package:weather_app/src/domain/entities/weather.dart';
 
 class DetailedWeatherView extends StatefulWidget {
-  static const String route = '/detail_view';
+  static const String route = '/detailed_weather_page';
   @override
   _DetailedWeatherViewState createState() => _DetailedWeatherViewState();
 }
 
 class _DetailedWeatherViewState extends State<DetailedWeatherView> {
+
   @override
   Widget build(BuildContext context) {
-    final weather = Weathers.fromJson(map).weather[0];
+    final Weather weather = ModalRoute.of(context).settings.arguments;
 
     return Scaffold(
       body: DefaultTabController(
@@ -42,9 +43,6 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                 SliverPersistentHeader(
                   delegate: _SliverAppBarDelegate(
                     TabBar(
-//                      labelColor: Colors.blue,
-//                      unselectedLabelColor: Colors.grey,
-
                       tabs: [
                         Tab(icon: Icon(Icons.info), text: "Detailed Information"),
                         Tab(
@@ -274,14 +272,14 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                   ),
                                   Padding(
                                       padding:
-                                          const EdgeInsets.fromLTRB(8, 4, 8, 4),
-                                      child: Image.asset(
-                                        weather.hourlyForcast.icons[index],
-                                        scale: 20,
-                                      )),
+                                          const EdgeInsets.fromLTRB(8, 8, 8, 8),
+                                      child: Icon(
+                                          hourlyWeatherForcastIconMap[weather.hourlyForcast.weatherCondition[index]],
+                                      ),
+                                  ),
                                   Padding(
                                       padding:
-                                          const EdgeInsets.fromLTRB(8, 4, 8, 8),
+                                          const EdgeInsets.fromLTRB(8, 8, 8, 4),
                                       child: Text(
                                         weather.hourlyForcast
                                                 .temperatures[index] +

@@ -6,12 +6,12 @@ part 'hourly_forcast.g.dart';
 @JsonSerializable()
 class HourlyForcast{
   final List<String> times;
-  final List<String> icons;
+  final List<String> weatherCondition;
   final List<String> temperatures;
 
   const HourlyForcast({
     this.times,
-    this.icons,
+    this.weatherCondition,
     this.temperatures,
   });
 

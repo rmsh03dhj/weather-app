@@ -1,32 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_app/detail_view.dart';
-import 'package:weather_app/domain/entities/weather_entity.dart';
-import 'package:weather_app/weather.dart';
+import 'package:weather_app/src/app/pages/detailed_weather_page.dart';
+import 'package:weather_app/src/domain/entities/weather.dart';
 import 'package:weather_icons/weather_icons.dart';
 
-class TodayCard extends StatefulWidget {
-  final WeatherEntity weather;
+import '../utils.dart';
 
-  TodayCard(this.weather);
+class TodayWeatherCard extends StatefulWidget {
+  final Weather weather;
+
+  TodayWeatherCard(this.weather);
 
   @override
   _TodayCard createState() => _TodayCard();
 }
 
-class _TodayCard extends State<TodayCard> {
+class _TodayCard extends State<TodayWeatherCard> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, DetailedWeatherView.route);
+        Navigator.pushNamed(context, DetailedWeatherView.route, arguments: widget.weather);
       },
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text("Today - ${DateFormat("MMM dd").format(DateTime.now())}",style: TextStyle(fontSize: 16),
+            padding: const EdgeInsets.only(top: 24),
+            child: Text("Today - ${DateFormat("MMM dd").format(DateTime.now())}",style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
           ),
           Row(
@@ -36,7 +37,7 @@ class _TodayCard extends State<TodayCard> {
               Padding(
                 padding: const EdgeInsets.all(24),
                 child: Icon(
-                  weatherIconMap[widget.weather.condition],
+                  hourlyWeatherForcastIconMap[widget.weather.condition],
                   size: 72,
                 ),
               ),
@@ -68,33 +69,38 @@ class _TodayCard extends State<TodayCard> {
 
             ],
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(8,0,8,0),
+                    child: Icon(WeatherIcons.sunrise),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(8,0,8,0),
+                    child: Text(widget.weather.sunrise),
+                  )
+                ],
+              ),Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(8,0,8,0),
+                    child: Icon(WeatherIcons.sunset),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(8,0,8,0),
+                    child: Text(widget.weather.sunset),
+                  )
+                ],
+              )
+            ],
+          )
         ],
       ),
     );
   }
 }
 
-Map<String, IconData> weatherIconMap = {
-  "snow": WeatherIcons.snow,
-  "heavyRain": WeatherIcons.rain,
-  "lightRain": WeatherIcons.raindrops,
-  "showers": WeatherIcons.raindrop,
-  "heavyCloud": WeatherIcons.cloudy,
-  "lightCloud": WeatherIcons.cloud_refresh,
-  "clear": WeatherIcons.day_sunny,
-  "hail": WeatherIcons.hail,
-  "thunderstorm": WeatherIcons.thunderstorm,
-};
 
-enum WeatherCondition {
-  snow,
-  hail,
-  thunderstorm,
-  heavyRain,
-  lightRain,
-  showers,
-  heavyCloud,
-  lightCloud,
-  clear,
-  unknown
-}

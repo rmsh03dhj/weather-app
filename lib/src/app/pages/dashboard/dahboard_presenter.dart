@@ -1,13 +1,13 @@
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
-import 'package:weather_app/domain/usecases/get_weathers_usecase.dart';
+import 'package:weather_app/src/domain/usecases/get_weathers_usecase.dart';
 
-class HomePresenter extends Presenter {
+class DashBoardPresenter extends Presenter {
   Function getWeathersOnNext;
   Function getWeathersOnComplete;
   Function getWeathersOnError;
 
   final GetWeatherUseCase getWeatherUseCase;
-  HomePresenter(usersRepo) : getWeatherUseCase = GetWeatherUseCase(usersRepo);
+  DashBoardPresenter(usersRepo) : getWeatherUseCase = GetWeatherUseCase(usersRepo);
 
   void getWeathers(String uid) {
     getWeatherUseCase.execute(
@@ -21,7 +21,7 @@ class HomePresenter extends Presenter {
 }
 
 class _GetUserUseCaseObserver extends Observer<GetWeatherUseCaseResponse> {
-  final HomePresenter presenter;
+  final DashBoardPresenter presenter;
   _GetUserUseCaseObserver(this.presenter);
   @override
   void onComplete() {
@@ -38,6 +38,6 @@ class _GetUserUseCaseObserver extends Observer<GetWeatherUseCaseResponse> {
   @override
   void onNext(response) {
     assert(presenter.getWeathersOnNext != null);
-    presenter.getWeathersOnNext(response.weatherEntities);
+    presenter.getWeathersOnNext(response.weatherList);
   }
 }
