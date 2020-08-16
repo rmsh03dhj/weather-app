@@ -119,7 +119,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       color: Colors.grey[600], fontSize: 14),
                                 ),
                                 Text(
-                                  weather.preceivedTemperature+" \u2103",
+                                  weather.perceivedTemperature+" \u2103",
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 )
@@ -265,7 +265,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                   Padding(
                                     padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
                                     child: Text(
-                                      weather.hourlyForcast.times[index],
+                                      weather.hourlyForecast.times[index],
                                       style: TextStyle(
                                           fontSize: 12),
                                     ),
@@ -274,14 +274,14 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       padding:
                                           const EdgeInsets.fromLTRB(8, 8, 8, 8),
                                       child: Icon(
-                                          weatherIconMap[weather.hourlyForcast.weatherCondition[index]],
+                                          weatherIconMap[weather.hourlyForecast.weatherCondition[index]],
                                       ),
                                   ),
                                   Padding(
                                       padding:
                                           const EdgeInsets.fromLTRB(8, 8, 8, 4),
                                       child: Text(
-                                        weather.hourlyForcast
+                                        weather.hourlyForecast
                                                 .temperatures[index] +
                                             " \u2103",
                                         style: TextStyle(

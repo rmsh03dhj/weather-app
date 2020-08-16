@@ -1,12 +1,9 @@
-
-import 'package:json_annotation/json_annotation.dart';
-
-class HourlyForcast{
+class HourlyForecast{
   final List<String> times;
   final List<String> weatherCondition;
   final List<String> temperatures;
 
-  const HourlyForcast({
+  const HourlyForecast({
     this.times,
     this.weatherCondition,
     this.temperatures,

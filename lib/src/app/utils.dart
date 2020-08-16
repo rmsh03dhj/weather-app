@@ -2,12 +2,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_app/src/domain/entities/hourly_forcast.dart';
+import 'package:weather_app/src/domain/entities/hourly_forecast.dart';
 import 'package:weather_app/src/domain/entities/weather.dart';
 import 'package:weather_icons/weather_icons.dart';
 
 Map<String, IconData> weatherIconMap = {
-  "Snow fall": WeatherIcons.time_1,
+  "Snow fall": WeatherIcons.snow,
   "Heavy Rain": WeatherIcons.rain,
   "Light Rain": WeatherIcons.raindrops,
   "Shower": WeatherIcons.showers,
@@ -30,7 +30,7 @@ Weather sampleWeather = Weather(
   day: DateFormat("EEE").format(DateTime.now()),
   minTemp: generateRandomNumber(),
   maxTemp: generateRandomNumber(),
-  hourlyForcast: HourlyForcast(
+  hourlyForecast: HourlyForecast(
       times: [
         "8am",
         "9am",
@@ -55,7 +55,7 @@ Weather sampleWeather = Weather(
   visibility: generateRandomNumber(),
   pressure: generateRandomNumber(),
   uv: "Lowest",
-  preceivedTemperature: generateRandomNumber(),
+  perceivedTemperature: generateRandomNumber(),
   precipitationProbability: generateRandomNumber(),
   sunrise: "5: 45 am",
   sunset: "5: 65 pm",

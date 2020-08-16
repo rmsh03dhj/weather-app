@@ -1,11 +1,11 @@
-import 'hourly_forcast.dart';
+import 'hourly_forecast.dart';
 
 class Weather {
   final String condition;
   final String minTemp;
   final String maxTemp;
   final String day;
-  final HourlyForcast hourlyForcast;
+  final HourlyForecast hourlyForecast;
   final String humidity;
   final String chanceOfRain;
   final String windSpeed;
@@ -14,7 +14,7 @@ class Weather {
   final String visibility;
   final String pressure;
   final String uv;
-  final String preceivedTemperature;
+  final String perceivedTemperature;
   final String precipitationProbability;
   final String sunrise;
   final String sunset;
@@ -30,9 +30,9 @@ class Weather {
       this.visibility,
       this.pressure,
       this.uv,
-      this.preceivedTemperature,
+      this.perceivedTemperature,
       this.precipitationProbability,
-      this.hourlyForcast,
+      this.hourlyForecast,
       this.humidity,
       this.chanceOfRain,
       this.windSpeed,
@@ -47,7 +47,7 @@ class Weather {
           String minTemp,
           String maxTemp,
           String day,
-          HourlyForcast hourlyForcast,
+          HourlyForecast hourlyForecast,
           String humidity,
           String chanceOfRain,
           String windSpeed,
@@ -56,7 +56,7 @@ class Weather {
           String visibility,
           String pressure,
           String uv,
-          String preceivedTemperature,
+          String perceivedTemperature,
           String precipitationProbability,
           String sunrise,
           String sunset,
@@ -67,7 +67,7 @@ class Weather {
           minTemp: minTemp ?? this.minTemp,
           maxTemp: maxTemp ?? this.maxTemp,
           day: day ?? this.day,
-          hourlyForcast: hourlyForcast ?? this.hourlyForcast,
+          hourlyForecast: hourlyForecast ?? this.hourlyForecast,
           humidity: humidity ?? this.humidity,
           chanceOfRain: chanceOfRain ?? this.chanceOfRain,
           windSpeed: windSpeed ?? this.windSpeed,
@@ -76,8 +76,8 @@ class Weather {
           visibility: visibility ?? this.visibility,
           pressure: pressure ?? this.pressure,
           uv: uv ?? this.uv,
-          preceivedTemperature:
-              preceivedTemperature ?? this.preceivedTemperature,
+          perceivedTemperature:
+              perceivedTemperature ?? this.perceivedTemperature,
           precipitationProbability:
               precipitationProbability ?? this.precipitationProbability,
           sunrise: sunrise ?? this.sunrise,
