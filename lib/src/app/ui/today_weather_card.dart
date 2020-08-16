@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:intl/intl.dart';
 import 'package:weather_app/src/app/pages/detailed_weather_page.dart';
 import 'package:weather_app/src/domain/entities/weather.dart';
 import 'package:weather_icons/weather_icons.dart';
@@ -27,7 +26,7 @@ class _TodayCard extends State<TodayWeatherCard> {
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 24),
-            child: Text("Today - ${DateFormat("MMM dd").format(DateTime.now())}",style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            child: Text(widget.weather.day,style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
           ),
           Row(
