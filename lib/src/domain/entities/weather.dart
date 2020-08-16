@@ -1,10 +1,5 @@
-
-import 'package:json_annotation/json_annotation.dart';
-
 import 'hourly_forcast.dart';
-part 'weather.g.dart';
 
-@JsonSerializable()
 class Weather {
   final String condition;
   final String minTemp;
@@ -26,20 +21,67 @@ class Weather {
   final String moonrise;
   final String moonset;
 
+  const Weather(
+      {this.sunrise,
+      this.sunset,
+      this.moonrise,
+      this.moonset,
+      this.precipitation,
+      this.visibility,
+      this.pressure,
+      this.uv,
+      this.preceivedTemperature,
+      this.precipitationProbability,
+      this.hourlyForcast,
+      this.humidity,
+      this.chanceOfRain,
+      this.windSpeed,
+      this.condition,
+      this.minTemp,
+      this.maxTemp,
+      this.day,
+      this.rainFall});
 
-  const Weather({this.sunrise, this.sunset, this.moonrise, this.moonset,
-      this.precipitation, this.visibility, this.pressure, this.uv, this.preceivedTemperature, this.precipitationProbability,
-        this.hourlyForcast,
-        this.humidity,
-        this.chanceOfRain,
-        this.windSpeed,
-        this.condition,
-        this.minTemp,
-        this.maxTemp,
-        this.day,
-        this.rainFall});
-
-
-  factory Weather.fromJson(Map<String, dynamic> json) => _$WeatherFromJson(json);
-
+  Weather copyWith(
+          {String condition,
+          String minTemp,
+          String maxTemp,
+          String day,
+          HourlyForcast hourlyForcast,
+          String humidity,
+          String chanceOfRain,
+          String windSpeed,
+          String rainFall,
+          String precipitation,
+          String visibility,
+          String pressure,
+          String uv,
+          String preceivedTemperature,
+          String precipitationProbability,
+          String sunrise,
+          String sunset,
+          String moonrise,
+          String moonset}) =>
+      Weather(
+          condition: condition ?? this.condition,
+          minTemp: minTemp ?? this.minTemp,
+          maxTemp: maxTemp ?? this.maxTemp,
+          day: day ?? this.day,
+          hourlyForcast: hourlyForcast ?? this.hourlyForcast,
+          humidity: humidity ?? this.humidity,
+          chanceOfRain: chanceOfRain ?? this.chanceOfRain,
+          windSpeed: windSpeed ?? this.windSpeed,
+          rainFall: rainFall ?? this.rainFall,
+          precipitation: precipitation ?? this.precipitation,
+          visibility: visibility ?? this.visibility,
+          pressure: pressure ?? this.pressure,
+          uv: uv ?? this.uv,
+          preceivedTemperature:
+              preceivedTemperature ?? this.preceivedTemperature,
+          precipitationProbability:
+              precipitationProbability ?? this.precipitationProbability,
+          sunrise: sunrise ?? this.sunrise,
+          sunset: sunset ?? this.sunset,
+          moonrise: moonrise ?? this.moonrise,
+          moonset: moonset ?? this.moonset);
 }

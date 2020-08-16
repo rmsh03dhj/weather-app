@@ -40,7 +40,7 @@ class _WeatherCard extends State<WeatherCard> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Icon(
-                          hourlyWeatherForcastIconMap[
+                          weatherIconMap[
                               widget.weatherList[widget.index].condition],
                           size: 36,
                         ),

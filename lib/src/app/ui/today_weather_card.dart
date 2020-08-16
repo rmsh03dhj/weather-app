@@ -37,7 +37,7 @@ class _TodayCard extends State<TodayWeatherCard> {
               Padding(
                 padding: const EdgeInsets.all(24),
                 child: Icon(
-                  hourlyWeatherForcastIconMap[widget.weather.condition],
+                  weatherIconMap[widget.weather.condition],
                   size: 72,
                 ),
               ),
@@ -61,7 +61,7 @@ class _TodayCard extends State<TodayWeatherCard> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        "RainFall Chances: ${widget.weather.chanceOfRain}"),
+                        "RainFall Chances: ${widget.weather.chanceOfRain} %"),
                     )
                   ],
                 ),

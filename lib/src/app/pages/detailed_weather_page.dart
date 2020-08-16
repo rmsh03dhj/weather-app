@@ -75,7 +75,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       color: Colors.grey[600], fontSize: 14),
                                 ),
                                 Text(
-                                  weather.precipitationProbability,
+                                  weather.precipitationProbability + " %",
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 )
@@ -93,7 +93,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       color: Colors.grey[600], fontSize: 14),
                                 ),
                                 Text(
-                                  weather.precipitation,
+                                  weather.precipitation + " mm",
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 )
@@ -119,7 +119,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       color: Colors.grey[600], fontSize: 14),
                                 ),
                                 Text(
-                                  weather.preceivedTemperature,
+                                  weather.preceivedTemperature+" \u2103",
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 )
@@ -137,7 +137,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       color: Colors.grey[600], fontSize: 14),
                                 ),
                                 Text(
-                                  weather.windSpeed,
+                                  weather.windSpeed +" Km/hr",
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 )
@@ -163,7 +163,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       color: Colors.grey[600], fontSize: 14),
                                 ),
                                 Text(
-                                  weather.humidity,
+                                  weather.humidity+ " %",
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 )
@@ -181,7 +181,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       color: Colors.grey[600], fontSize: 14),
                                 ),
                                 Text(
-                                  weather.visibility,
+                                  weather.visibility+" Km",
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 )
@@ -225,7 +225,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       color: Colors.grey[600], fontSize: 14),
                                 ),
                                 Text(
-                                  weather.pressure,
+                                  weather.pressure + " hPa",
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 )
@@ -274,7 +274,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       padding:
                                           const EdgeInsets.fromLTRB(8, 8, 8, 8),
                                       child: Icon(
-                                          hourlyWeatherForcastIconMap[weather.hourlyForcast.weatherCondition[index]],
+                                          weatherIconMap[weather.hourlyForcast.weatherCondition[index]],
                                       ),
                                   ),
                                   Padding(
