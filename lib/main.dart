@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/bloc/bloc_provider.dart';
-import 'package:weather_app/bloc/weather_bloc.dart';
 import 'package:weather_app/dashboard.dart';
 import 'package:weather_app/detail_view.dart';
 import 'package:weather_app/weather.dart';
@@ -15,17 +13,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<WeatherBloc>(
-      bloc: WeatherBloc(),
-      child: MaterialApp(
-        theme: ThemeData.dark(),
-        home: Dashboard(),
-        routes: routes,
-      ),
+    return MaterialApp(
+      theme: ThemeData.dark(),
+      home: Dashboard(),
+      routes: routes,
     );
   }
 }
-
 
 final routes = <String, Widget Function(BuildContext)>{
   DetailedWeatherView.route: (_) => DetailedWeatherView(),

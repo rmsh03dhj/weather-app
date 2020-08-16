@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:weather_app/bloc/bloc_provider.dart';
 import 'package:weather_app/detail_view.dart';
 import 'package:weather_app/today_card.dart';
 import 'package:weather_app/weather.dart';
-
-import 'bloc/weather_bloc.dart';
 
 class WeatherCard extends StatefulWidget {
   final int index;
@@ -21,16 +18,11 @@ class WeatherCard extends StatefulWidget {
 class _WeatherCard extends State<WeatherCard> {
   @override
   Widget build(BuildContext context) {
-    final weatherBloc = WeatherBloc();
-    return BlocProvider<WeatherBloc>(
-      bloc:weatherBloc,
-      child: Card(
+    return Card(
       margin: EdgeInsets.all(4),
-//      color: cardColorDependingOnDateMap[widget.listItems[widget.index].day],
       child: InkWell(
-        onTap: (){
-//        weatherBloc.changeBackgroundColor(cardColorDependingOnDateMap[widget.listItems[widget.index].day]);
-        Navigator.pushNamed(context, DetailedWeatherView.route);
+        onTap: () {
+          Navigator.pushNamed(context, DetailedWeatherView.route);
         },
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -79,7 +71,6 @@ class _WeatherCard extends State<WeatherCard> {
             ),
           ],
         ),
-      ),
       ),
     );
   }
