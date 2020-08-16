@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_app/detail_view.dart';
+import 'package:weather_app/domain/entities/weather_entity.dart';
 import 'package:weather_app/weather.dart';
 import 'package:weather_icons/weather_icons.dart';
 
 class TodayCard extends StatefulWidget {
-  final Weather weather;
+  final WeatherEntity weather;
 
   TodayCard(this.weather);
 
