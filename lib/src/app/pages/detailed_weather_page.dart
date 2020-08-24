@@ -40,11 +40,13 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                   pinned: true,
                   flexibleSpace: FlexibleSpaceBar(
                     centerTitle: true,
-                    title: Text("Weather App",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16.0,
-                        )),
+                    title: ShowTitleOnAppBarCollapse(
+                      child: Text("Weather App",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.0,
+                          )),
+                    ),
                     background: Swiper(
                       itemBuilder: (BuildContext context, int index) {
                         return new Image.asset(
