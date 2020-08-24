@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:weather_app/src/app/pages/show_title_on_appbar_collapse.dart';
 import 'package:weather_app/src/app/utils.dart';
 import 'package:weather_app/src/domain/entities/weather.dart';
 
@@ -9,6 +11,13 @@ class DetailedWeatherView extends StatefulWidget {
 }
 
 class _DetailedWeatherViewState extends State<DetailedWeatherView> {
+  List<String> images = [
+    "assets/icons/weather.jpg",
+    "assets/icons/weather.jpg",
+    "assets/icons/weather.jpg",
+    "assets/icons/weather.jpg",
+    "assets/icons/weather.jpg"
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +27,8 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
       body: DefaultTabController(
         length: 2,
         child: NestedScrollView(
-            headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            headerSliverBuilder:
+                (BuildContext context, bool innerBoxIsScrolled) {
               return <Widget>[
                 SliverAppBar(
                   leading: IconButton(
@@ -29,22 +39,34 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                   floating: false,
                   pinned: true,
                   flexibleSpace: FlexibleSpaceBar(
-                      centerTitle: true,
-                      title: Text("Weather App",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16.0,
-                          )),
-                      background: Image.asset(
-                        "assets/icons/weather.jpg",
-                        fit: BoxFit.cover,
-                      )),
+                    centerTitle: true,
+                    title: Text("Weather App",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16.0,
+                        )),
+                    background: Swiper(
+                      itemBuilder: (BuildContext context, int index) {
+                        return new Image.asset(
+                          images[index],
+                          fit: BoxFit.cover,
+                        );
+                      },
+                      autoplay: true,
+                      itemCount: images.length,
+                      pagination:
+                          SwiperPagination(alignment: Alignment.bottomCenter),
+//                      control: SwiperControl(),
+                    ),
+                  ),
                 ),
                 SliverPersistentHeader(
                   delegate: _SliverAppBarDelegate(
                     TabBar(
                       tabs: [
-                        Tab(icon: Icon(Icons.info), text: "Detailed Information"),
+                        Tab(
+                            icon: Icon(Icons.info),
+                            text: "Detailed Information"),
                         Tab(
                             icon: Icon(Icons.info_outline),
                             text: "Other Information"),
@@ -109,7 +131,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(left: 24, top:16),
+                            padding: const EdgeInsets.only(left: 24, top: 16),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -119,7 +141,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       color: Colors.grey[600], fontSize: 14),
                                 ),
                                 Text(
-                                  weather.perceivedTemperature+" \u2103",
+                                  weather.perceivedTemperature + " \u2103",
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 )
@@ -127,7 +149,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(right: 24, top:16),
+                            padding: const EdgeInsets.only(right: 24, top: 16),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
@@ -137,7 +159,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       color: Colors.grey[600], fontSize: 14),
                                 ),
                                 Text(
-                                  weather.windSpeed +" Km/hr",
+                                  weather.windSpeed + " Km/hr",
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 )
@@ -153,7 +175,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(left: 24, top:16),
+                            padding: const EdgeInsets.only(left: 24, top: 16),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -163,7 +185,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       color: Colors.grey[600], fontSize: 14),
                                 ),
                                 Text(
-                                  weather.humidity+ " %",
+                                  weather.humidity + " %",
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 )
@@ -171,7 +193,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(right: 24, top:16),
+                            padding: const EdgeInsets.only(right: 24, top: 16),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
@@ -181,7 +203,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                       color: Colors.grey[600], fontSize: 14),
                                 ),
                                 Text(
-                                  weather.visibility+" Km",
+                                  weather.visibility + " Km",
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 14),
                                 )
@@ -197,7 +219,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(left: 24, top:16),
+                            padding: const EdgeInsets.only(left: 24, top: 16),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -215,7 +237,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(right: 24, top:16),
+                            padding: const EdgeInsets.only(right: 24, top: 16),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
@@ -244,7 +266,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                       child: Center(
                           child: Text(
                         "Hourly Forcast",
-                        style: TextStyle( fontSize: 16),
+                        style: TextStyle(fontSize: 16),
                       )),
                     ),
                     Container(
@@ -259,23 +281,25 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                               child: Container(
                                 decoration: new BoxDecoration(
                                   shape: BoxShape.rectangle,
-                                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(8.0)),
                                 ),
                                 child: Column(children: [
                                   Padding(
-                                    padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
+                                    padding:
+                                        const EdgeInsets.fromLTRB(8, 4, 8, 4),
                                     child: Text(
                                       weather.hourlyForecast.times[index],
-                                      style: TextStyle(
-                                          fontSize: 12),
+                                      style: TextStyle(fontSize: 12),
                                     ),
                                   ),
                                   Padding(
-                                      padding:
-                                          const EdgeInsets.fromLTRB(8, 8, 8, 8),
-                                      child: Icon(
-                                          weatherIconMap[weather.hourlyForecast.weatherCondition[index]],
-                                      ),
+                                    padding:
+                                        const EdgeInsets.fromLTRB(8, 8, 8, 8),
+                                    child: Icon(
+                                      weatherIconMap[weather.hourlyForecast
+                                          .weatherCondition[index]],
+                                    ),
                                   ),
                                   Padding(
                                       padding:
@@ -284,8 +308,7 @@ class _DetailedWeatherViewState extends State<DetailedWeatherView> {
                                         weather.hourlyForecast
                                                 .temperatures[index] +
                                             " \u2103",
-                                        style: TextStyle(
-                                            fontSize: 12),
+                                        style: TextStyle(fontSize: 12),
                                       )),
                                 ]),
                               ),
